@@ -12,31 +12,33 @@ function Circle({ children }) {
 
 export default function Page() {
   const [reversed, setReversed] = useState(false);
-  const el = useRef();
-  const q = gsap.utils.selector(el);
-  const tl = useRef();
+  const ref = useRef();
+  const refOnUse = gsap.utils.selector(ref);
+  const toggleRef = useRef();
 
   useEffect(() => {
-    tl.current && tl.current.progress(0).kill();
-    tl.current = gsap
+    toggleRef.current && toggleRef.current.progress(0).kill();
+    toggleRef.current = gsap
       .timeline()
 
-      .to(q(".circle"), {
+      .to(refOnUse(".circle"), {
         x: 100,
-        rotate: "+=360",
-        repeat: -1,
+        y: 50,
+        scale: 2,
+        rotate: 360,
+        repeat: 1,
         yoyo: true,
       });
   });
 
   useEffect(() => {
-    tl.current.reversed(reversed);
+    toggleRef.current.reversed(reversed);
   }, [reversed]);
 
   return (
-    <div className="my-20 space-x-4" ref={el}>
+    <div className="my-20 space-x-4" ref={ref}>
       <button
-        className="bg-blue-100 border border-black "
+        className="bg-green-400 border border-black "
         onClick={() => setReversed(!reversed)}
       >
         activate
