@@ -1,6 +1,7 @@
 import "./styles.css";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import Scroll from "./scroll";
 
 function Circle({ children }) {
   return (
@@ -16,15 +17,21 @@ export default function Page() {
   const refOnUse = gsap.utils.selector(ref);
   const toggleRef = useRef();
 
+  const onEnter = ({ currentTarget }) => {
+    gsap.to(currentTarget, { backgroundColor: "#8caddf", scale: 1.2 });
+  };
+
+  const onLeave = ({ currentTarget }) => {
+    gsap.to(currentTarget, { backgroundColor: "green", scale: 1 });
+  };
+
   useEffect(() => {
-    toggleRef.current && toggleRef.current.progress(0).kill();
+    toggleRef.current && toggleRef.current.progress(0);
     toggleRef.current = gsap
       .timeline()
 
       .to(refOnUse(".circle"), {
         x: 100,
-        y: 50,
-        scale: 2,
         rotate: 360,
         repeat: 1,
         yoyo: true,
@@ -36,14 +43,19 @@ export default function Page() {
   }, [reversed]);
 
   return (
-    <div className="my-20 space-x-4" ref={ref}>
-      <button
-        className="bg-green-400 border border-black "
-        onClick={() => setReversed(!reversed)}
-      >
-        activate
-      </button>
-      <Circle>Roll</Circle>
+    <div>
+      <div className="my-20 space-x-4" ref={ref}>
+        <button
+          className=" bg-green-700 border border-black "
+          onMouseEnter={onEnter}
+          onMouseLeave={onLeave}
+          onClick={() => setReversed(!reversed)}
+        >
+          activate
+        </button>
+        <Circle>Roll</Circle>
+      </div>
+      <Scroll />
     </div>
   );
 }
