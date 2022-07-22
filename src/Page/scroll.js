@@ -16,7 +16,7 @@ export default function Scroll() {
         trigger: "#secondCircle",
         markers: true,
         start: "top center",
-        end: "bottom 10px",
+        end: "bottom center",
         scrub: true,
       },
     });
@@ -29,7 +29,9 @@ export default function Scroll() {
         ref={circleRef}
         className="bg-blue-200 rounded-full h-20 w-20 mb-100"
         id={"secondCircle"}
-      ></div>
+      >
+        x
+      </div>
     </div>
   );
 }
