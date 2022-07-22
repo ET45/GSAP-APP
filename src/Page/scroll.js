@@ -14,19 +14,22 @@ export default function Scroll() {
       duration: 5,
       scrollTrigger: {
         trigger: "#secondCircle",
-        markers: false,
+        markers: true,
         start: "top center",
-        end: "bottom 200px",
+        end: "bottom 10px",
         scrub: true,
       },
     });
   }, []);
 
   return (
-    <div className="ml-60">
-      <div id="firstCircle"></div>
-      <div ref={circleRef} id="secondCircle"></div>
-      <div id="thirdCircle"></div>
+    <div className="ml-10">
+      <div className="bg-yellow-200 rounded-full h-20 w-20 mb-20  "></div>
+      <div
+        ref={circleRef}
+        className="bg-blue-200 rounded-full h-20 w-20 mb-100"
+        id={"secondCircle"}
+      ></div>
     </div>
   );
 }
