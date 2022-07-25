@@ -20,10 +20,13 @@ export default function ScrollPage() {
     });
   });
   return (
-    <div>
+    <div className="flex items-baseline justify-center ">
       {" "}
-      <div className="grid bg-red-500 ml-20 mt-20 w-20 h-20 mb-100 " id={"box"}>
-        x<p className="place-self-center">x</p>x
+      <div
+        className="grid bg-red-500 ml-20 mt-20 w-20 h-20 mb-100  "
+        id={"box"}
+      >
+        x<p className="place-self-center">x</p>y
       </div>
     </div>
   );

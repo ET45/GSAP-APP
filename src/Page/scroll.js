@@ -23,7 +23,7 @@ export default function Scroll() {
   }, []);
 
   return (
-    <div className="ml-10">
+    <div className="ml-10 ">
       <div className="bg-yellow-200 rounded-full h-20 w-20 mb-20  "></div>
       <div
         ref={circleRef}
